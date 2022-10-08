@@ -1,5 +1,5 @@
 require_relative "../config/environment.rb"
-require 'active_support/inflector'
+require 'active_support/inflector' #The #pluralize method is provided to us by the active_support/inflector code library.
 
 class Song
 
@@ -11,7 +11,7 @@ class Song
   def self.column_names
     DB[:conn].results_as_hash = true
 
-    sql = "pragma table_info('#{table_name}')"
+    sql = "PRAGMA table_info('#{table_name}')" # a query for column names - a method that actually grabs us those column names.
 
     table_info = DB[:conn].execute(sql)
     column_names = []
